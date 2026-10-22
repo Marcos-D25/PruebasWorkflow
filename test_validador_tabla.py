@@ -7,7 +7,7 @@ La clase debe vivir en validador_tabla.py, en la misma carpeta.
 import pandas as pd
 import pytest
 
-from scripts.validador_tabla import ValidadorTabla
+from validador_tabla import ValidadorTabla
 
 
 @pytest.fixture

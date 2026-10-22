@@ -23,7 +23,7 @@ class ValidadorTabla:
         if set(clave) - set(self.dataframe.columns):
             raise KeyError("La clave indicada no pertenece a las columnas del df")
 
-        return self.dataframe.loc[self.dataframe.duplicated(clave, keep=False)]
+        return self.dataframe.loc[self.dataframe.duplicated(clave, keep="first")]
 
     def resumen(self) -> dict[str, int]:
         """{'filas', 'columnas', 'nulos_totales', 'duplicados_completos'}"""

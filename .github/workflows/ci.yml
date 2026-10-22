@@ -14,6 +14,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip                       # acelera las siguientes ejecuciones
+          cache-dependency-path: requirements-dev.txt
       - run: pip install -r requirements-dev.txt
       - run: ruff check .                  # lint
       - run: black --check .               # formato (comprueba, no reescribe)

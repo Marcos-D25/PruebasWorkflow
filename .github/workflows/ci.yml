@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  calidad:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4          # descarga el código
+      - uses: actions/setup-python@v5      # instala Python
+        with:
+          python-version: "3.12"
+          cache: pip                       # acelera las siguientes ejecuciones
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .                  # lint
+      - run: black --check .               # formato (comprueba, no reescribe)
+      - run: python -m pytest --cov=validador_tabla --cov-report=term-missing --cov-fail-under=80
